@@ -4,27 +4,27 @@ import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";
 import { LogosBitcoin } from "../assets/icons";
 
-const sigmaStyle = { height: "500px", width: "500px" };
+const sigmaStyle = { height: "500px", width: "auto", backgroundColor: "#f1f5f9" };
 export const LoadGraph = ({ transactionData }) => {
   const loadGraph = useLoadGraph();
 
   useEffect(() => {
     const graph = new Graph();
-    let prevNode;
+    // let prevNode;
     transactionData.out.map((walletAddr, index) => {
       graph.addNode(walletAddr.addr, {
         x: index * 20,
-        y: 30,
+        y: 30 * Math.ceil(Math.random() * 20),
         label: walletAddr.addr,
         color: "cyan",
         size: 35,
       });
-      if (prevNode !== undefined) {
-        graph.addDirectedEdgeWithKey("edge", prevNode, walletAddr.addr, {
-          label: "edge",
-        });
-      }
-      prevNode = walletAddr.addr;
+      // if (prevNode !== undefined) {
+      //   graph.addDirectedEdgeWithKey("edge", prevNode, walletAddr.addr, {
+      //     label: "edge",
+      //   });
+      // }
+      // prevNode = walletAddr.addr;
     });
 
     loadGraph(graph);
