@@ -46,7 +46,7 @@ const Home = () => {
         </section>
 
         <section>
-          <h2 className="text-7xl text-white w-2/3 leading-tight tracking-tight mx-auto p-12">
+          <h2 className="text-7xl text-white w-4/5 leading-tight tracking-tight mx-auto p-12">
             Analyse & Track Crypto Currencies transactions back to Source
           </h2>
         </section>
@@ -73,7 +73,7 @@ const Home = () => {
         </section>
 
         {txDetails && (
-          <section className="p-4 text-white flex flex-col">
+          <section className="p-4 text-white flex flex-col w-screen">
             {console.log(txDetails)}
             <h2 className="text-3xl p-4 mb-4 text-center">
               Transaction Details
@@ -132,7 +132,7 @@ const Home = () => {
             />
 
             <h2 className="text-center text-3xl p-4">Receivers wallet addresses visualization</h2>
-            <div className="self-center">
+            <div className="items-stretch">
               <SimpleGraph transactionData={txDetails} />
             </div>
           </section>
