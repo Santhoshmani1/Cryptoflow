@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   HugeiconsMoneyReceiveCircle,
   HugeiconsMoneySendCircle,
@@ -57,24 +58,32 @@ const Home = () => {
 
         <h2></h2>
 
-        <section className="flex items-center justify-center">
-          <input
-            type="text"
-            className="p-3 text-lg border w-1/3 rounded my-12 bg-slate-800 text-white border-gray-800 hover:border-slate-300"
-            placeholder="Enter Bitcoin Transaction Address"
-            onChange={(e) => setTxHash(e.target.value)}
-          />
-          <button
-            className="px-4 py-3.5 mx-4 bg-slate-900 text-white rounded border border-white hover:bg-slate-950 duration-300"
-            onClick={getTxDetails}
-          >
-            Trace Now
-          </button>
+        <section className="flex items-center flex-col w-full justify-center">
+          <div className="w-full flex items-center justify-center">
+            <input
+              type="text"
+              className="p-3 text-lg border w-1/3 rounded my-12 bg-slate-800 text-white border-gray-800 hover:border-slate-300"
+              placeholder="Enter Bitcoin Transaction Address"
+              onChange={(e) => setTxHash(e.target.value)}
+            />
+            <button
+              className="px-4 py-3.5 mx-4 bg-slate-900 text-white rounded border border-white hover:bg-slate-950 duration-300"
+              onClick={getTxDetails}
+            >
+              Trace Now
+            </button>
+          </div>
+          <section className="self-center">
+            <Link to="/Visualize">
+              <button className="p-3 text-white self-center bg-slate-900 hover:bg-slate-950 border-2 rounded-md">
+                Visualize
+              </button>
+            </Link>
+          </section>
         </section>
 
         {txDetails && (
           <section className="p-4 text-white flex flex-col w-screen">
-            {console.log(txDetails)}
             <h2 className="text-3xl p-4 mb-4 text-center">
               Transaction Details
             </h2>
@@ -130,11 +139,6 @@ const Home = () => {
               Label={"Time Confirmed (UTC)"}
               Value={new Date(txDetails.time * 1000).toLocaleString()}
             />
-
-            <h2 className="text-center text-3xl p-4">Receivers wallet addresses visualization</h2>
-            <div className="items-stretch">
-              <SimpleGraph transactionData={txDetails} />
-            </div>
           </section>
         )}
       </main>
