@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { HugeiconsMoneyReceiveCircle, HugeiconsMoneySendCircle, LogosBitcoin, IonTime } from "../assets/icons.jsx"
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [txHash, setTxHash] = useState('');
@@ -54,17 +55,16 @@ const Home = () => {
             placeholder='Enter Bitcoin Transaction Address'
             onChange={(e) => setTxHash(e.target.value)}
           />
-          <button
+          <Link to={"/tx"}
             className='px-4 py-3.5 mx-4 bg-slate-900 text-white rounded border border-white hover:bg-slate-950 duration-300'
-            onClick={getTxDetails}
           >
             Trace Now
-          </button>
+          </Link>
         </section>
 
 
         {txDetails && (
-          <section className='p-4 text-white'>
+          <section className='p-4 text-white hidden'>
             <h2 className='text-3xl p-4 mb-4 text-center'>Transaction Details</h2>
 
 
