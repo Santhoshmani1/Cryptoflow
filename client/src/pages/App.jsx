@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import SimpleGraph from "./SimpleGraph";
+import TxGraph from "./tx";
+
 const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Visualize" element={<SimpleGraph />} />
+        <Route path="/tx" element={<TxGraph />} />
       </Routes>
     </>
   );
